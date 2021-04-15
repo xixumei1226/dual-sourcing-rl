@@ -1,0 +1,1 @@
+from gym.envs.registration import registerregister(    id= 'DualSourcing-v0',    entry_point='dual_sourcing.envs.dual_sourcing:DualSourcing',)

@@ -1,0 +1,7 @@
+README.md
+setup.py
+dual_sourcing.egg-info/PKG-INFO
+dual_sourcing.egg-info/SOURCES.txt
+dual_sourcing.egg-info/dependency_links.txt
+dual_sourcing.egg-info/requires.txt
+dual_sourcing.egg-info/top_level.txt

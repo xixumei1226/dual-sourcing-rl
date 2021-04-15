@@ -26,6 +26,7 @@ class DualSourcing(gym.Env):
     
     def seed(self, seed=None):
         np.random.seed(seed)
+        self.action_space.np_random.seed(seed)
         return seed
     
     def step(self, action):
