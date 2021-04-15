@@ -21,7 +21,7 @@ Let $C_t$ be the sum of the ordering cost and holding and backorder costs incurr
 
 <img src="./img/3.png" style="float: center;" />
 
-An admissible policy <img src="https://latex.codecogs.com/gif.latex?\pi" />  consists of a sequence of deterministic measurable functions <img src="https://latex.codecogs.com/gif.latex?\{f_t^{\pi},t\ge\ 1\}" /> from $\mathbb{R}^{L_r + L_e + 1}$ to $\mathbb{R}^2_+$. Specifically, the new orders placed in period $t$ are given by $(q_t^r, q_t^e) = f_t^{\pi} (\mathbf{q}_t^r, \mathbf{q}_t^e, I_t)$. Let $\Pi$ denote the family of all admissible policies. The cost under a policy $\pi$ is denoted by $C_t^{\pi}$. We aim to minimize the long-run average cost
+An admissible policy <img src="https://latex.codecogs.com/gif.latex?\pi" />  consists of a sequence of deterministic measurable functions <img src="https://latex.codecogs.com/gif.latex?\{f_t^{\pi},t\ge1\}" /> from $\mathbb{R}^{L_r + L_e + 1}$ to $\mathbb{R}^2_+$. Specifically, the new orders placed in period $t$ are given by $(q_t^r, q_t^e) = f_t^{\pi} (\mathbf{q}_t^r, \mathbf{q}_t^e, I_t)$. Let $\Pi$ denote the family of all admissible policies. The cost under a policy $\pi$ is denoted by $C_t^{\pi}$. We aim to minimize the long-run average cost
 
 <img src="./img/4.png" style="float: center;" />
 
