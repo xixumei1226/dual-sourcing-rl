@@ -12,6 +12,7 @@ At period $t$, a sequence of events happen in the following order:
 -  Costs for period <img src="https://latex.codecogs.com/gif.latex?t" /> are incurred.
 
 Notice the on-hand inventory is updated according to 
+
 <img src="./img/1.png" style="float: center;" />
 
 The pipeline vectors are updated according to
