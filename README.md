@@ -12,6 +12,12 @@ At period $t$, a sequence of events happen in the following order:
 -  Costs for period $t$ are incurred.
 
 Notice the on-hand inventory is updated according to 
+
+```math
+ I_{t+1} = I_t + q_{t-L_r}^r + q_{t-L_e}^e - D_t.
+```
+
+
 $$
 \begin{equation*}
     I_{t+1} = I_t + q_{t-L_r}^r + q_{t-L_e}^e - D_t.
