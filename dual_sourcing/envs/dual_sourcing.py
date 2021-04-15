@@ -36,9 +36,9 @@ class DualSourcing(gym.Env):
         newState = self.g(self.state, action)
         newState[-1] = newState[-1] - demand
         self.state = newState.copy()
-        done = (newState[-1] == self.starting_state[-1])
+#         done = (newState[-1] == self.starting_state[-1])
         
-        return self.state, reward, demand, done, {}
+        return self.state, reward, demand, {}
     
     # Auxilary function computing the reward
     def r(self, state):
