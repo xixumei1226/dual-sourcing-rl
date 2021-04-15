@@ -8,60 +8,39 @@ At period $t$, a sequence of events happen in the following order:
 - The on-hand inventory <img src="https://latex.codecogs.com/gif.latex?I_t" /> is observed.
 - New orders <img src="https://latex.codecogs.com/gif.latex?q_t^r" /> and <img src="https://latex.codecogs.com/gif.latex?q_t^e" />  are placed with <img src="https://latex.codecogs.com/gif.latex?R" /> and <img src="https://latex.codecogs.com/gif.latex?E" />.
 -  New inventory <img src="https://latex.codecogs.com/gif.latex?q_{t-L_r}^r+q_{t-L_e}^e" /> is delivered and added to the on-hand inventory.
-- The demand <img src="https://latex.codecogs.com/gif.latex?D_t" / is realized; the inventory and pipeline vectors are updated.
--  Costs for period <img src="https://latex.codecogs.com/gif.latex?t" / are incurred.
+- The demand <img src="https://latex.codecogs.com/gif.latex?D_t" /> is realized; the inventory and pipeline vectors are updated.
+-  Costs for period <img src="https://latex.codecogs.com/gif.latex?t" /> are incurred.
 
 Notice the on-hand inventory is updated according to 
-![image info] (./img/1.png)
+<img src="./img/1.png" style="float: center;" />
 The pipeline vectors are updated according to
-$$
-\begin{align*}
-    \mathbf{q}_{t+1}^r &= (q_{t-L_r+1}^r, \dots, q_{t-1}^r, q_t^r), \\
-    \mathbf{q}_{t+1}^e &= (q_{t-L_e+1}^e, \dots, q_{t-1}^e, q_t^e).
-\end{align*}
-$$
-Let $C_t$ be the sum of the ordering cost and holding and backorder costs incurred in time period t:
-$$
-\begin{equation*}
-    C_{t} = c_r q_t^r + c_e q_t^e + h I_{t+1}^+ + b I_{t+1}^-.
-\end{equation*}
-$$
-An admissible policy $\pi$ consists of a sequence of deterministic measurable functions $\{f_t^{\pi}, t\geq 1\}$ from $\mathbb{R}^{L_r + L_e + 1}$ to $\mathbb{R}^2_+$. Specifically, the new orders placed in period $t$ are given by $(q_t^r, q_t^e) = f_t^{\pi} (\mathbf{q}_t^r, \mathbf{q}_t^e, I_t)$. Let $\Pi$ denote the family of all admissible policies. The cost under a policy $\pi$ is denoted by $C_t^{\pi}$. We aim to minimize the long-run average cost
-$$
-\begin{equation*}
-    C(\pi) = \limsup_{T \rightarrow \infty} \frac{1}{T} \sum_{t = 1}^{T} \mathbb{E}[C_t^{\pi}].
-\end{equation*}
-$$
 
+<img src="./img/2.png" style="float: center;" />
+
+Let $C_t$ be the sum of the ordering cost and holding and backorder costs incurred in time period t:
+
+<img src="./img/3.png" style="float: center;" />
+
+An admissible policy <img src="https://latex.codecogs.com/gif.latex?\pi" />  consists of a sequence of deterministic measurable functions <img src="https://latex.codecogs.com/gif.latex?\{f_t^{\pi},t\ge\ 1\}" /> from $\mathbb{R}^{L_r + L_e + 1}$ to $\mathbb{R}^2_+$. Specifically, the new orders placed in period $t$ are given by $(q_t^r, q_t^e) = f_t^{\pi} (\mathbf{q}_t^r, \mathbf{q}_t^e, I_t)$. Let $\Pi$ denote the family of all admissible policies. The cost under a policy $\pi$ is denoted by $C_t^{\pi}$. We aim to minimize the long-run average cost
+
+<img src="./img/4.png" style="float: center;" />
 
 Assume the demands follow Poisson distribution: $D \sim \mathrm{Pois}(\lambda)$, where $\lambda > 0$. Furthermore, assume the orders can only take integer values. Then the above process can be formulated as a discrete MDP. At period $t$, let $s_t = (\mathbf{q}_t^r, \mathbf{q}_t^e, I_t)$ be the state of the system, and let $a_t = (q_t^r, q_t^e)$ be the action taken. The state space $\mathcal{S}$ and action space $\mathcal{A}$ are given by
-$$
-\begin{equation*}
-    \mathcal{S} = \mathbb{Z}_+^{L_r} \times \mathbb{Z}_+^{L_e} \times \mathbb{Z}, \quad \mathcal{A} = \mathbb{Z}_+^2.
-\end{equation*}
-$$
+
+<img src="./img/5.png" style="float: center;" />
+
 Note that $C_t$ is a function of $s_{t+1}$ instead of $s_t$. So the reward of step $t$ is actually received at step $t-1$:
-$$
-\begin{equation*}
-    r(s_t, a_t) = - C_{t-1} = -c_r q_{t-1}^r - c_e q_{t-1}^e - h I_t^+ - b I_t^-.
-\end{equation*}
-$$
+
+<img src="./img/6.png" style="float: center;" />
+
 Define the function $g: \mathbb{R}^{L_r + L_e + 1} \times \mathbb{R}^{2} \rightarrow \mathbb{R}^{L_r + L_e + 1}$ as
-$$
-\begin{equation*}
-    g(x_1, \dots, x_{L_r}, y_1, \dots, y_{L_e}, z, a_1, a_2) = (x_2, \dots, x_{L_r}, a_1, y_2, \dots, y_{L_e}, a_2, z + x_1 + y_1).
-\end{equation*}
-$$
+
+<img src="./img/7.png" style="float: center;" />
+
 Then
-$$
-\begin{equation*}
-    s_{t+1} = g(s_t, a_t) - (0, \dots, 0, D_t).
-\end{equation*}
-$$
+
+<img src="./img/8.png" style="float: center;" />
+
 Hence the transition probabilities are given by
-$$
-\begin{equation*}
-    \mathbb{P}(s_{t+1} = g(s_t, a_t) - (0, \dots, 0, k) \mid s_t, a_t) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, \dots.
-\end{equation*}
-$$
+<img src="./img/9.png" style="float: center;" />
 
