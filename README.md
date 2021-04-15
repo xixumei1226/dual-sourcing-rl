@@ -1,23 +1,18 @@
 # Dual-sourcing Inventory Problem
 
 It is common practice that companies depend on multiple suppliers for product ordering. 
-Suppose we have a regular supplier <img src="https://latex.codecogs.com/gif.latex?R" />, with a longer lead time <img src="https://latex.codecogs.com/gif.latex?L_r" /> and a lower cost <img src="https://latex.codecogs.com/gif.latex?c_r" />, and an express supplier <img src="https://latex.codecogs.com/gif.latex?E" />, with a shorter lead time <img src="https://latex.codecogs.com/gif.latex?L_e" /> and a higher cost <img src="https://latex.codecogs.com/gif.latex?c_e" />. Assume we have a sequence of i.i.d. demands <img src="https://latex.codecogs.com/gif.latex?\{D_t,t\ge1\}" />, distributed as the nonnegative random variable <img src="https://latex.codecogs.com/gif.latex?D" />. Denote the unit holding and backorder costs by <img src="https://latex.codecogs.com/gif.latex?h" />and <img src="https://latex.codecogs.com/gif.latex?b" /> respectively. Let <img src="https://latex.codecogs.com/gif.latex?I_t" /> denote the on-hand inventory, and <img src="https://latex.codecogs.com/gif.latex?\mathbf{q}_t^r=\{q_{t-i}^r,i\in[L_r]\}, \mathbf{q}_t^e=\{q_{t-i}^e,i\in[L_e]\} " /> , denote the pipeline vectors of orders placed but not yet delivered with <img src="https://latex.codecogs.com/gif.latex?R" /> and <img src="https://latex.codecogs.com/gif.latex?E" /> at the start of period <img src="https://latex.codecogs.com/gif.latex?t" />, where <img src="https://latex.codecogs.com/gif.latex?q_{t-i}^r,q_{t-i}^e" /> are the orders placed in period <img src="https://latex.codecogs.com/gif.latex?t-i" />.
+Suppose we have a regular supplier <img src="https://latex.codecogs.com/gif.latex?R" />, with a longer lead time <img src="https://latex.codecogs.com/gif.latex?L_r" /> and a lower cost <img src="https://latex.codecogs.com/gif.latex?c_r" />, and an express supplier <img src="https://latex.codecogs.com/gif.latex?E" />, with a shorter lead time <img src="https://latex.codecogs.com/gif.latex?L_e" /> and a higher cost <img src="https://latex.codecogs.com/gif.latex?c_e" />. Assume we have a sequence of i.i.d. demands <img src="https://latex.codecogs.com/gif.latex?\{D_t,t\ge1\}" />, distributed as the nonnegative random variable <img src="https://latex.codecogs.com/gif.latex?D" />. Denote the unit holding and backorder costs by <img src="https://latex.codecogs.com/gif.latex?h" />and <img src="https://latex.codecogs.com/gif.latex?b" /> respectively. Let <img src="https://latex.codecogs.com/gif.latex?I_t" /> denote the on-hand inventory, and <img src="https://latex.codecogs.com/gif.latex?\mathbf{q}_t^r=\{q_{t-i}^r,i\in[L_r]\},\mathbf{q}_t^e=\{q_{t-i}^e,i\in[L_e]\} " /> , denote the pipeline vectors of orders placed but not yet delivered with <img src="https://latex.codecogs.com/gif.latex?R" /> and <img src="https://latex.codecogs.com/gif.latex?E" /> at the start of period <img src="https://latex.codecogs.com/gif.latex?t" />, where <img src="https://latex.codecogs.com/gif.latex?q_{t-i}^r,q_{t-i}^e" /> are the orders placed in period <img src="https://latex.codecogs.com/gif.latex?t-i" />.
 
 At period $t$, a sequence of events happen in the following order:
 
-- The on-hand inventory $I_t$ is observed.
-- New orders $q_t^r$ and $q_t^e$ are placed with $R$ and $E$.
--  New inventory $q_{t-L_r}^r + q_{t-L_e}^e$ is delivered and added to the on-hand inventory.
-- The demand $D_t$ is realized; the inventory and pipeline vectors are updated.
--  Costs for period $t$ are incurred.
+- The on-hand inventory <img src="https://latex.codecogs.com/gif.latex?I_t" /> is observed.
+- New orders <img src="https://latex.codecogs.com/gif.latex?q_t^r" /> and <img src="https://latex.codecogs.com/gif.latex?q_t^e" />  are placed with <img src="https://latex.codecogs.com/gif.latex?R" /> and <img src="https://latex.codecogs.com/gif.latex?E" />.
+-  New inventory <img src="https://latex.codecogs.com/gif.latex?q_{t-L_r}^r+q_{t-L_e}^e" /> is delivered and added to the on-hand inventory.
+- The demand <img src="https://latex.codecogs.com/gif.latex?D_t" / is realized; the inventory and pipeline vectors are updated.
+-  Costs for period <img src="https://latex.codecogs.com/gif.latex?t" / are incurred.
 
 Notice the on-hand inventory is updated according to 
-
-$$
-\begin{equation*}
-    I_{t+1} = I_t + q_{t-L_r}^r + q_{t-L_e}^e - D_t.
-\end{equation*}
-$$
+![image info] (./img/1.png)
 The pipeline vectors are updated according to
 $$
 \begin{align*}
