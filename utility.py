@@ -1,3 +1,5 @@
+import numpy as np
+
 def convergence_test(env, numiters, policy, *args):
 
     cum_reward = np.zeros(numiters)
