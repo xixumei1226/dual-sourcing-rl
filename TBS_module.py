@@ -3,7 +3,7 @@ from scipy.stats import poisson
 import utility
 
 def TBS(env, r, S):
-    ip = r * env.Le + np.sum(env.state[env.Lr:])
+    ip = np.sum(env.state[1:(env.Le+1)]) + np.sum(env.state[env.Lr:])
     return r, max(0, S-ip)
 
 def eigenvalue(A, v):
