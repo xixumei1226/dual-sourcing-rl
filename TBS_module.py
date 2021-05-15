@@ -40,7 +40,12 @@ def find_optimal_TBS(env):
         for i in range(1, size, 1):
             for j in range(1, min(i+r, size), 1):
                 trans_prob[i, j] = poisson.pmf(lam, i+r-j)
-            trans_prob[i, 0] = 1. - np.sum(trans_prob[i, :])
+            k = i + r 
+            prob = poisson.pmf(lam, k)
+            while prob > 0:
+                trans_prob[i, 0] = trans_prob[i, 0] + prob
+                k = k + 1
+                prob = poisson.pmf(lam, k)
         stat_dist = power_iteration(trans_prob)
         cum_prob = 0
         S = 0
