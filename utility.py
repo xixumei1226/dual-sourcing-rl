@@ -10,7 +10,6 @@ def convergence_test(env, numiters, policy, *args):
     for t in range(numiters-1):
         action = policy(*args)
         state, reward, demand, info = env.step(action)
-#         print(state)
         cum_reward[t+1] = cum_reward[t] + reward
         av_reward[t+1] = cum_reward[t+1] / (t+1)
         
@@ -35,11 +34,9 @@ def evaluate(env, n_episodes, numiters, policy, *args):
         for t in range(numiters):
             action = policy(*args)
             state, reward, demand, info = env.step(action)
-#             print(state)
             if t > 100 and np.abs( av_r / (t+1) - (av_r + reward) / (t+2))  < 1e-4: # convergence is spotted
                 break
             av_r = av_r + reward
         av_reward[i] = av_r / (t+1)
-#         print(t)
         
     return np.mean(av_reward), np.std(av_reward) # return average reward and std

@@ -2,7 +2,6 @@ import gym
 import numpy as np
 import sys
 
-
 class DualSourcing(gym.Env):
 
     def __init__(self, config):
@@ -22,6 +21,8 @@ class DualSourcing(gym.Env):
         self.action_space = gym.spaces.MultiDiscrete([self.max_order+1]*2)
         self.observation_space = gym.spaces.MultiDiscrete([self.max_order+1]*(self.Lr+self.Le)+[self.max_inventory])
         
+        self.nA = (self.max_order+1) ** 2
+        
         metadata = {'render.modes': ['human']}
     
     def seed(self, seed=None):
@@ -35,8 +36,8 @@ class DualSourcing(gym.Env):
         demand = np.random.poisson(self.Lambda)
         newState = self.g(self.state, action)
         newState[-1] = newState[-1] - demand
+        newState[-1] = max(-self.max_inventory, min(newState[-1], self.max_inventory))
         self.state = newState.copy()
-#         done = (newState[-1] == self.starting_state[-1])
         
         return self.state, reward, demand, {}
     
