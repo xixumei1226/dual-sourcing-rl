@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def convergence_test(env, numiters, policy, *args):
 
