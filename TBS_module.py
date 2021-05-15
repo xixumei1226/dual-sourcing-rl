@@ -54,7 +54,7 @@ def find_optimal_TBS(env):
             S = S + 1
         
         # compare reward
-        average_reward = utility.evaluate(env, 100, 3000, TBS, env, r, S)[0]
+        average_reward = utility.evaluate(env, 100, 5000, TBS, env, r, S)[0]
         if flag:
             flag = False
             max_reward = average_reward
