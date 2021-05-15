@@ -25,7 +25,7 @@ def evaluate(env, n_episodes, numiters, policy, *args):
     # numiters: number of time steps (inner iteration)
     # policy: policy function
     # *args: arguments in the policy function
-    
+    env.seed(0)
     av_reward = np.zeros(n_episodes)
     
     for i in range(n_episodes):
