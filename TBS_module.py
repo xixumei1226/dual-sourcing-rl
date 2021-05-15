@@ -35,7 +35,7 @@ def find_optimal_TBS(env):
     lam = env.Lambda
     for r in range(lam):
         # find optimal S
-        size = 100
+        size = 200
         trans_prob = np.zeros(shape = (size, size))
         for i in range(1, size, 1):
             for j in range(1, min(i+r, size), 1):
@@ -54,7 +54,7 @@ def find_optimal_TBS(env):
             S = S + 1
         
         # compare reward
-        average_reward = utility.evaluate(env, 100, 1000, TBS, env, r, S)[0]
+        average_reward = utility.evaluate(env, 100, 3000, TBS, env, r, S)[0]
         if flag:
             flag = False
             max_reward = average_reward
