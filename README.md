@@ -47,3 +47,33 @@ Then
 Hence the transition probabilities are given by
 <img src="./img/9.png" style="float: center;" />
 
+
+# Getting Started
+
+## Prerequisites
+
+To use this package, you need to install Python 3.8.2 and the following python dependencies:
+```
+pip install torch==1.7.1
+pip install gym
+pip install numpy
+pip install matplotlib
+```
+
+## Installation
+
+Download the code as a folder `dual-sourcing-rl`. Then go to the folder and run the command 
+```
+pip install -e .
+```
+
+## Usage
+
+1. DualSourcing-v0
+
+To use the environment `DualSourcing-v0`
+'''
+
+
+'''
+
