@@ -62,7 +62,7 @@ pip install matplotlib
 
 ## Installation
 
-Download the code as a folder `dual-sourcing-rl`. Then go to the folder and run the command 
+Download the code as a folder `dual-sourcing-rl`. Then go to the folder and run
 ```
 pip install -e .
 ```
@@ -81,7 +81,7 @@ CONFIG = {'Lr': 5, 'Le': 1, 'cr': 100, 'ce': 105, 'lambda': 10,
           'h': 1, 'b': 19, 'starting_state': [0]*7, 'max_order': 20, 'max_inventory': 1000}
 env = gym.make('DualSourcing-v0', config=CONFIG)
 ```
-to create a dual-sourcing environment. Specify the configuration by the parameter `config`. Here `Lr, Le, cr, ce, lambda, h, b`
+to create a dual-sourcing environment. Specify the configuration by the parameter `config`. The parameters `Lr, Le, cr, ce, lambda, h, b`
 are consistent with Problem Setup. A state is represented by a numpy array of dimension `Lr+Le+1`. The parameter `starting_state` is the initial state of the dual-sourcing inventory system, `max_order` is the maximum number of products that can be ordered from each supplier, and `max_inventory` is the maximum number of products that can be held in stock. Correspondingly, `-max_inventory` is the maximum number of backorders that can be taken. The environment keeps the on-hand inventory `I` within the range by the running
 ```
 I = max(-max_inventory, min(I, max_inventory))
@@ -90,11 +90,11 @@ Use
 ```
 env.seed(seed)
 ```
-to set the seed for the env’s random number generator. To execute one time step within the environment, simply run
+to set the seed for the environment’s random number generator. To execute one time step within the environment, simply run
 ```
 env.step(action)
 ```
-where `action` is a numpy array of dimension 2 representing the orders place with the two suppliers. To reset the environment to the initial state, run
+where `action` is a numpy array of dimension 2 representing the orders placed with the two suppliers. To reset the environment to the initial state, run
 ```
 env.reset()
 ```
@@ -133,15 +133,15 @@ initializes the model by approximating the TBS policy with parameters `r` and `S
 ```
 A2C(env, model, optimizer, maxit, rollout, param)
 ```
-trains the model using the A2C algorithm with specified hyperparameters. The paramter `optimizer` is an object of `torch.optim` class, e.g.,
+trains the model using the A2C algorithm with specified hyperparameters. The parameter `optimizer` is an object of `torch.optim` class, e.g.,
 ```
 optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate)
 ```
-The parameters `maxit` and `rollout` is the number of episodes and length of each episode taken by the algorithm. The parameter `param` is a dictionary with possible keys listed as follows:
+The parameters `maxit` and `rollout` are the number of episodes and length of each episode taken by the algorithm. The parameter `param` is a dictionary with possible keys listed as follows:
 - `gamma`: the discount factor; the default is 0.99.
 - `terminal_state`: the terminal state in simulations; the default is `None`.
-- `loss_function`: the loss function for critic approximation; the default is `torch.nn.functional.smooth_l1_loss`.
+- `loss_function`: the loss function for critic approximation; the default is `smooth_l1_loss`.
 - `value_weight`: the weight of critic loss; the default is 1.
-- `number_of_actors`: the number of simulations ran at each episode; the default is 1.
+- `number_of_actors`: the number of simulations run at each episode; the default is 1.
 - `env_seed`: the seed for the environment; the function does not set seed if no value is given.
 - `torch_seed`: the seed for torch; the function does not set seed if no value is given.
