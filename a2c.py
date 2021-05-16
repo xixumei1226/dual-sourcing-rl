@@ -71,7 +71,7 @@ def A2C(env, model, optimizer, maxit, rollout, param = {}):
 
     m = env.max_order + 1
     
-    for t in range(maxit):
+    for tt in range(maxit):
         policy_loss = []
         value_loss = []
         for k in range(number_of_actors):
